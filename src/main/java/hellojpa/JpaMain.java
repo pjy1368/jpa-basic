@@ -1,6 +1,5 @@
 package hellojpa;
 
-import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -16,16 +15,9 @@ public class JpaMain {
         tx.begin();
 
         try {
-//            Member member = new Member();
-//            member.setId(1L);
-//            member.setName("제이온");
-//            em.persist(member);
+            Member member = em.find(Member.class, 150L);
+            member.setName("ZZZ");
 
-//            Member findMember = em.find(Member.class, 1L);
-//            findMember.setName("우기");
-            // JPQL
-            List<Member> result = em.createQuery("select m from Member as m", Member.class)
-                .getResultList();
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
